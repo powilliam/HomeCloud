@@ -1,13 +1,14 @@
 FROM node:lts
 
-RUN mkdir app
-WORKDIR /app
+WORKDIR /usr/src/app
 
 COPY package.json .
 RUN npm install
 
 COPY . .
-RUN npm run build
+
+RUN mkdir __tests__/storage -p
+RUN mkdir public/storage -p
 
 RUN npm run test
 
