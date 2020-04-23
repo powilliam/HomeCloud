@@ -15,6 +15,7 @@ services:
     environment:
       POSTGRES_USER: dev
       POSTGRES_PASSWORD: dev
+      POSTGRES_DB: dev
     ports:
       - 3334:5432
   postgres:
