@@ -8,6 +8,12 @@ export class Folder {
   public id!: string;
 
   @Column({
+    nullable: false,
+    type: 'varchar',
+  })
+  public name!: string;
+
+  @Column({
     name: 'access_code',
     unique: true,
     nullable: false,

@@ -4,6 +4,7 @@ import { Folder } from './Folder';
 import { File } from './File';
 
 import { development } from '../../config/database';
+import { getFolder, getFile } from '../../mocks/entities';
 
 describe('Testing File Schema', () => {
   beforeAll(async () => {
@@ -19,12 +20,10 @@ describe('Testing File Schema', () => {
   it('should create a file', async () => {
     const fileRepository = getRepository(File);
 
-    const file = fileRepository.create({
-      name: 'test',
-      size: 12,
+    const mockFile = getFile({
       accessUrl: 'localhost',
-      mimetype: 'text/plain',
     });
+    const file = fileRepository.create(mockFile);
     await fileRepository.save(file);
 
     const createdFile = await fileRepository.findOne({
@@ -42,16 +41,15 @@ describe('Testing File Schema', () => {
     const folderRepository = getRepository(Folder);
     const fileRepository = getRepository(File);
 
-    const folder = folderRepository.create({ accessCode: '123' });
+    const mockFolder = getFolder();
+    const folder = folderRepository.create(mockFolder);
     await folderRepository.save(folder);
 
-    const file = fileRepository.create({
-      name: 'test',
-      size: 12,
-      accessUrl: 'localhost',
+    const mockFile = getFile({
       folder,
-      mimetype: 'text/plain',
+      accessUrl: 'localhost',
     });
+    const file = fileRepository.create(mockFile);
     await fileRepository.save(file);
 
     const createdFile = await fileRepository.findOne({

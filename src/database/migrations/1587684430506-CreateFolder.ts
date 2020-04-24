@@ -16,6 +16,11 @@ export class CreateFolder1587684430506 implements MigrationInterface {
             generationStrategy: 'uuid',
           },
           {
+            name: 'name',
+            type: 'varchar',
+            isNullable: false,
+          },
+          {
             name: 'access_code',
             type: 'varchar',
             isUnique: true,

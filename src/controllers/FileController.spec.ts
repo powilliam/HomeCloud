@@ -84,7 +84,9 @@ describe('Testing FileController', () => {
     it('should delete the file from database', async () => {
       const fileRepository = getRepository(File);
 
-      const mockFile = getFile('localhost');
+      const mockFile = getFile({
+        accessUrl: 'localhost',
+      });
       const file = fileRepository.create(mockFile);
       await fileRepository.save(file);
 
