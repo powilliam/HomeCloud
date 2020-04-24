@@ -52,6 +52,7 @@ describe('Testing FileController', () => {
       expect(body).toHaveProperty('name');
       expect(body).toHaveProperty('size');
       expect(body).toHaveProperty('accessUrl');
+      expect(body).toHaveProperty('mimetype');
 
       await fileRepository.delete({ name: 'test-file' });
     });

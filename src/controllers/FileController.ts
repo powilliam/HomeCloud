@@ -13,7 +13,7 @@ class FileController {
         .json({ error: 'cannot upload a file that wasnt attached' });
     }
 
-    const { filename, originalname, size } = request.file;
+    const { filename, originalname, size, mimetype } = request.file;
     const fileRepository = getRepository(File);
 
     const [name] = originalname.split('.');
@@ -23,6 +23,7 @@ class FileController {
       name,
       size,
       accessUrl,
+      mimetype,
     });
 
     await fileRepository.save(file);

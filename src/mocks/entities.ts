@@ -9,5 +9,6 @@ export const getFile = (accessUrl?: string) => {
     name: 'test',
     size: 12,
     accessUrl,
+    mimetype: 'text/plain',
   };
 };

@@ -13,6 +13,9 @@ export class File {
   @Column({ type: 'integer', nullable: true })
   public size!: number;
 
+  @Column({ name: 'mime_type', type: 'varchar', nullable: false })
+  public mimetype!: string;
+
   @Column({
     name: 'access_url',
     unique: true,

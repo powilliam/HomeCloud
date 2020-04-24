@@ -23,6 +23,7 @@ describe('Testing File Schema', () => {
       name: 'test',
       size: 12,
       accessUrl: 'localhost',
+      mimetype: 'text/plain',
     });
     await fileRepository.save(file);
 
@@ -49,6 +50,7 @@ describe('Testing File Schema', () => {
       size: 12,
       accessUrl: 'localhost',
       folder,
+      mimetype: 'text/plain',
     });
     await fileRepository.save(file);
 
