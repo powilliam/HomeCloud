@@ -25,6 +25,7 @@ describe('Testing FileController', () => {
 
     const upload = multer({ storage });
 
+    app.get('/test/files', FileController.index);
     app.post('/test/files', upload.single('file'), FileController.store);
     app.delete('/test/files/:fileId', FileController.destroy);
   });
@@ -36,6 +37,17 @@ describe('Testing FileController', () => {
 
     const destinationDir = readdirSync(destination);
     destinationDir.forEach(file => unlinkSync(destination + '/' + file));
+  });
+
+  describe('Index method', () => {
+    it('should return all files', async () => {
+      const { status, body } = await supertest(app).get('/test/files');
+
+      console.log('> Searched files e2e', body);
+
+      expect(status).toBe(200);
+      expect(body).toHaveProperty('files');
+    });
   });
 
   describe('Store method', () => {

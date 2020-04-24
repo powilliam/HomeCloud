@@ -6,6 +6,14 @@ import { File } from '../database/entities/File';
 import { HTTP_ADDRESS, HTTP_STATICFOLDER } from '../config/env';
 
 class FileController {
+  public async index(request: Request, response: Response) {
+    const fileRepository = getRepository(File);
+
+    const files = await fileRepository.find({ relations: ['folder'] });
+
+    return response.json({ files });
+  }
+
   public async store(request: Request, response: Response) {
     if (!request.file) {
       return response
