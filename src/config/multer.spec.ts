@@ -8,7 +8,7 @@ import app from '../app';
 import { createStorageConfig } from './multer';
 
 const destination = resolve(__dirname, '..', '..', '__tests__', 'storage');
-const testFile = resolve(__dirname, 'test-file.txt');
+const testFile = resolve(__dirname, '..', 'mocks', 'test-file.txt');
 
 describe('Testing multer configuration for Disk Storage', () => {
   beforeAll(() => {
@@ -25,7 +25,6 @@ describe('Testing multer configuration for Disk Storage', () => {
 
   afterAll(() => {
     const destinationDir = readdirSync(destination);
-
     destinationDir.forEach(file => unlinkSync(destination + '/' + file));
   });
 
