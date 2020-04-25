@@ -1,6 +1,17 @@
 {
-    "cli": {
-        "entitiesDir": "src/database/entities",
-        "migrationsDir": "src/database/migrations"
-    }
+  "type": "postgres",
+  "username": "dev",
+  "password": "dev",
+  "database": "dev",
+  "port": 3334,
+  "host": "localhost",
+  "entities": [
+    "./src/database/entities/Folder.ts",
+    "./src/database/entities/File.ts"
+  ],
+  "migrations": ["./src/database/migrations/*.ts"],
+  "cli": {
+    "entitiesDir": "src/database/entities",
+    "migrationsDir": "src/database/migrations"
+  }
 }
